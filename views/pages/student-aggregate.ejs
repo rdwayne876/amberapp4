@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Book Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% students.forEach(student=> { %>
+                    <tr>
+                        <td>
+                            <%= student.first_name + " " + student.last_name %>
+                        </td>
+                        <td>
+                            <%= student.book_count %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+
+
+</body>
+
+</html>

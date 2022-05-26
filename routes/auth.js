@@ -30,6 +30,7 @@ router.post('/authlogin', (req, res) =>{
         console.log(results)
 
         if(results.length <= 0) {
+            req.flash('error', 'Invalid credentials Please try again!')
             res.redirect('/login/')
         } else {
             req.session.loggedIn = true;

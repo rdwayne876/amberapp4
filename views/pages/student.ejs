@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Book Name</th>
+                    <th>Due Date</th>
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <% students.forEach(student=> { %>
+                    <tr>
+                        <td>
+                            <%= student.first_name + " " + student.last_name %>
+                        </td>
+                        <td>
+                            <%= student.book_name %>
+                        </td>
+                        <td>
+                            <%= new Date(student.due_date).toLocaleDateString() %>
+                        </td>
+                        <td>
+                            <a href="/students/aggregate/<%= student.id %> ">
+                                View aggregate
+                            </a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+
+
+</body>
+
+</html>

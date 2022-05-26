@@ -2,14 +2,9 @@ require('dotenv').config()
 const express = require('express')
 const app = express();
 
-
-
-
-
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('express-flash')
-
 
 app.set('view engine', 'ejs')
 app.use(express.json())
@@ -21,11 +16,8 @@ app.use(express.urlencoded({ extended: true}))
  * 
  */
 const indexRoute = require('./routes/index')
+const studentRoute = require('./routes/student')
 const authRoute = require('./routes/auth');
-app.use('/', indexRoute)
-app.use('/login', authRoute)
-
-
 
 /**
  * 
@@ -42,14 +34,9 @@ app.use(session({
 }))
 app.use(flash())
 
-app.use((req, res, next) => {
-    res.locals.success = req.flash("success")
-    res.locals.error =  req.flash("error")
-    next();
-})
-
-
-
+app.use('/', indexRoute)
+app.use('/login', authRoute)
+app.use('/students', studentRoute)
 
 app.listen(process.env.APP_PORT)
 console.log('Server is listening on port '+ process.env.APP_PORT)
